@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function TodoForm({listChanger}) {
+function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   const [input, setInput] = useState('');
 
   const onChangeValue = (e) => {
@@ -9,18 +9,31 @@ function TodoForm({listChanger}) {
 
   const onAddItem = () => {
     if (input.trim() !== '') {
-      let newTodo = { "todo": input, "done": false }
-      listChanger((prevItems) => [...prevItems, newTodo]);
-      setInput('');
+      if (updateIdx !== null && updateIdx >= 0) {
+        var array = [...list];
+        array[updateIdx].todo = input;
+        listChanger(array);
+        updateChanger(-1);
+      } else {
+        let newTodo = { "todo": input, "done": false }
+        listChanger((prevItems) => [...prevItems, newTodo]);
+        setInput('');
+      }
     }
   };
+
+  useEffect(() => {
+    if (updateIdx !== null && list.length > 0) {
+      setInput(list[updateIdx].todo);
+    }
+  }, []);
 
   return (
     <div>
       <form>
         <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' />
         <button type="button" onClick={onAddItem}>
-          Add Item
+          {updateIdx !== null ? "Update" : "Add"} Item
         </button>
       </form>
     </div>

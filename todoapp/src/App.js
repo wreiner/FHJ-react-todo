@@ -6,15 +6,18 @@ import { useState } from 'react';
 import React from 'react';
 
 function App() {
+
   const [list, setList] = useState([]);
+  // const [updateEntry, setUpdateEntry] = useState({});
 
   return (
     <div>
       <h1>ToDo List App</h1>
 
-      <TodoForm listChanger={setList} />
+      <TodoForm list={list} listChanger={setList} updateIdx={null} updateChanger={null} />
 
       <TodoList list={list} listChanger={setList} />
+
     </div>
   );
 }
