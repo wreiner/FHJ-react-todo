@@ -1,42 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class TodoForm extends Component {
-  constructor(props) {
-    super(props);
+function TodoForm({listChanger}) {
+  const [input, setInput] = useState('');
 
-    this.state = {
-        value: "",
-        list: [],
-    };
-  }
-
-  onChangeValue = event => {
-    this.setState({ value: event.target.value });
+  const onChangeValue = (e) => {
+    setInput(e.target.value);
   };
 
-  onAddItem = () => {
-    console.log(`will add '${this.state.value}'`);
-
-    this.setState(state => {
-        const list = [...state.list, state.value];
-
-      return {
-        list,
-        value: '',
-      };
-    });
+  const onAddItem = () => {
+    if (input.trim() !== '') {
+      listChanger((prevItems) => [...prevItems, input]);
+      setInput('');
+    }
   };
 
-  render() {
-    return (
-      <div>
+  return (
+    <div>
       <form>
-        <input value={this.state.value} onChange={this.onChangeValue} />
-        <button type="button" onClick={this.onAddItem}>Add Item</button>
+        <input value={input} onChange={onChangeValue} />
+        <button type="button" onClick={onAddItem}>
+          Add Item
+        </button>
       </form>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default TodoForm;

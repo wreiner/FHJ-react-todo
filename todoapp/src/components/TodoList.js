@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
+function TodoList({list, listChanger}) {
 
-class TodoList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: "",
-            list: [],
-        };
+  const onDelItem = (e) => {
+    // https://stackoverflow.com/a/36326779
+    var array = [...list];
+    var index = array.indexOf(e.target.innerText)
+    if (index !== -1) {
+      array.splice(index, 1);
+      listChanger(array);
     }
+  };
 
-
-    render() {
-        return (
-          <div>
-            <ul>
-              {this.state.list.map(item => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        );
-      }
+  return (
+    <div>
+      <ul>
+        {list.map(item => (
+          <li key={item} onClick={onDelItem}>{item} </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
 
 export default TodoList;
