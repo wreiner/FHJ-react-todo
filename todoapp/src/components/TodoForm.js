@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './TodoForm.css';
 
 function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   const [input, setInput] = useState('');
@@ -31,7 +32,7 @@ function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   return (
     <div>
       <form>
-        <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' />
+        <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' className='inputclass' />
         <button type="button" onClick={onAddItem}>
           {updateIdx !== null ? "Update" : "Add"} Item
         </button>

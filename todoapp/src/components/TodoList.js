@@ -2,6 +2,7 @@ import { MdDeleteForever } from 'react-icons/md';
 import { MdEdit } from 'react-icons/md';
 import { useState } from 'react';
 import TodoForm from './TodoForm';
+import './TodoList.css';
 
 function TodoList({list, listChanger}) {
 
@@ -41,17 +42,17 @@ function TodoList({list, listChanger}) {
       {
         list?.length > 0
           ? (
-            <ul>
+            <ul className='todo-list'>
             {list.map((item, idx) => (
               <li id={idx} key={idx}>
                 <span onClick={() => onMarkDone(idx)}>{item.done ? <s>{item.todo}</s> : item.todo}</span>
-                <MdEdit onClick={() => onEdit(idx)}/>
-                <MdDeleteForever onClick={() => onDelItem(idx)}/>
+                <MdEdit onClick={() => onEdit(idx)} className='hoverhand'/>
+                <MdDeleteForever onClick={() => onDelItem(idx)} className='hoverhand'/>
               </li>
             ))}
             </ul>
           ) : (
-            <p>No Todos added yet</p>
+            <p className='emptylist'>No Todos added yet</p>
           )
       }
       </>
