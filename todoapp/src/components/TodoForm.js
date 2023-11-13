@@ -18,7 +18,7 @@ function TodoForm({listChanger}) {
   return (
     <div>
       <form>
-        <input value={input} onChange={onChangeValue} />
+        <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' />
         <button type="button" onClick={onAddItem}>
           Add Item
         </button>
