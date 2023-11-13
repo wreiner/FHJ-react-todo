@@ -9,7 +9,8 @@ function TodoForm({listChanger}) {
 
   const onAddItem = () => {
     if (input.trim() !== '') {
-      listChanger((prevItems) => [...prevItems, input]);
+      let newTodo = { "todo": input, "done": false }
+      listChanger((prevItems) => [...prevItems, newTodo]);
       setInput('');
     }
   };
