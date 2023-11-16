@@ -1,0 +1,25 @@
+ul {
+    list-style-type: none;
+    width: 90%;
+}
+
+span {
+    width: 96%;
+}
+
+li {
+    padding: 10px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.emptylist {
+    margin: 10px;
+}
+
+.hoverhand {
+    cursor: pointer;
+}
