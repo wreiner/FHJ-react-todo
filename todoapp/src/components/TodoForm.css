@@ -1,3 +1,63 @@
 .inputclass {
     margin: 10px;
 }
+
+.group {
+    display: flex;
+    flex-wrap: wrap; /* Wrap the elements */
+    margin-top: 4px;
+  }
+
+  .group label {
+    display: flex;
+    width: 15%;
+    line-height: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .group input[type="text"] {
+    width: 85%;
+    border: 1px solid rgb(116, 115, 115);
+    padding-left: 3px;
+    flex: 1; /* Take the remaining width */
+  }
+
+  .group textarea:focus,
+  input:focus {
+    outline: none;
+  }
+
+  .group .errorMsg {
+    color: #cc0033;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 0 0;
+    width: 100%;
+  }
+
+  .group .errorMsg {
+    display: none;
+  }
+
+
+  /* Error Styling */
+
+  .err label {
+    color: #cc0033;
+  }
+
+  .err input[type=text] {
+    background-color: #fce4e4;
+    border: 1px solid #cc0033;
+    outline: none;
+  }
+
+  .err .errorMsg {
+    display: flex; /* Instead of inline-block */
+    width: 85%; /* Same as input width */
+    left: 15%; /* Rest of the width */
+    position: relative; /* Relative to parent */
+
+  }
