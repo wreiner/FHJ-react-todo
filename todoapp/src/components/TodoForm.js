@@ -42,15 +42,17 @@ function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   }, []);
 
   return (
-    <div>
-      <form>
-        <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' className='inputclass' />
-        {error && <p style={{ color: 'red', margin: '0', alignSelf: 'flex-start' }}>{error}</p>}
-        <button type="button" onClick={onAddItem} style={{ alignSelf: 'flex-start', marginTop: '10px' }}>
-          {updateIdx !== null ? "Update" : "Add"} Item
-        </button>
-      </form>
-    </div>
+    <>
+      <div className="input-button-container">
+          <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' className='inputclass' />
+          <button type="button" onClick={onAddItem} style={{ alignSelf: 'flex-start'}}>
+            {updateIdx !== null ? "Update" : "Add"} Item
+          </button>
+      </div>
+      <div className="error-container">
+        {error && <p style={{ color: 'red', margin: '0'}}>{error}</p>}
+      </div>
+    </>
   );
 }
 

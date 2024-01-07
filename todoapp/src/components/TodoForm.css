@@ -1,5 +1,6 @@
 .inputclass {
-    margin: 10px;
+  height: 15px;
+  margin-right: 10px;
 }
 
 .group {
@@ -41,6 +42,12 @@
     display: none;
   }
 
+  .input-button-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10px;
+  }
 
   /* Error Styling */
 
@@ -59,5 +66,13 @@
     width: 85%; /* Same as input width */
     left: 15%; /* Rest of the width */
     position: relative; /* Relative to parent */
+
+  }
+
+  .error-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10px;
 
   }
