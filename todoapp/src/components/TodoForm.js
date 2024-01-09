@@ -11,7 +11,15 @@ function TodoForm({list, listChanger, updateIdx, updateChanger}) {
 
   const validateInput = () => {
     if (input.length < 5) {
-      setError('lalla5');
+      setError('Todo must be at least 5 characters long!');
+      return false;
+    }
+    else if (!input.match(/^[A-Za-z]+$/)) {
+      setError('Enter letters only!')
+      return false;
+    }
+    else if (input.length > 150){
+      setError(`Maximum length with ${input.length - 150} exceeded!`)
       return false;
     }
     return true;
