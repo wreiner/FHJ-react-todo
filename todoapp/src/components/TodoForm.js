@@ -3,13 +3,32 @@ import './TodoForm.css';
 
 function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   const [input, setInput] = useState('');
+  const [error, setError] = useState('');
 
   const onChangeValue = (e) => {
     setInput(e.target.value);
   };
 
+  const validateInput = () => {
+    if (input.length < 5) {
+      setError('Todo must be at least 5 characters long!');
+      return false;
+    } else if (!input.match(/^[A-Za-z]+$/)) {
+      setError('Enter letters only!')
+      return false;
+    } else if (input.length > 150){
+      setError(`Maximum length with ${input.length - 150} exceeded!`)
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
   const onAddItem = () => {
     if (input.trim() !== '') {
+      if (!validateInput()) {
+        return;
+      }
       if (updateIdx !== null && updateIdx >= 0) {
         var array = [...list];
         array[updateIdx].todo = input;
@@ -30,14 +49,17 @@ function TodoForm({list, listChanger, updateIdx, updateChanger}) {
   }, []);
 
   return (
-    <div>
-      <form>
-        <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' className='inputclass' />
-        <button type="button" onClick={onAddItem}>
-          {updateIdx !== null ? "Update" : "Add"} Item
-        </button>
-      </form>
-    </div>
+    <>
+      <div className="input-button-container">
+          <input value={input} onChange={onChangeValue} placeholder='What do you need todo?' className='inputclass' />
+          <button type="button" onClick={onAddItem} style={{ alignSelf: 'flex-start'}}>
+            {updateIdx !== null ? "Update" : "Add"} Item
+          </button>
+      </div>
+      <div className="error-container">
+        {error && <p style={{ color: 'red', margin: '0'}}>{error}</p>}
+      </div>
+    </>
   );
 }
 

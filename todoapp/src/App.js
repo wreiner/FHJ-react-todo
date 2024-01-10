@@ -11,14 +11,14 @@ function App() {
   // const [updateEntry, setUpdateEntry] = useState({});
 
   return (
-    <div>
+    <>
       <h1>ToDo List App</h1>
 
       <TodoForm list={list} listChanger={setList} updateIdx={null} updateChanger={null} />
 
       <TodoList list={list} listChanger={setList} />
 
-    </div>
+    </>
   );
 }
 
