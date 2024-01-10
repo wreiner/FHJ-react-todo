@@ -13,15 +13,14 @@ function TodoForm({list, listChanger, updateIdx, updateChanger}) {
     if (input.length < 5) {
       setError('Todo must be at least 5 characters long!');
       return false;
-    }
-    else if (!input.match(/^[A-Za-z]+$/)) {
+    } else if (!input.match(/^[A-Za-z]+$/)) {
       setError('Enter letters only!')
       return false;
-    }
-    else if (input.length > 150){
+    } else if (input.length > 150){
       setError(`Maximum length with ${input.length - 150} exceeded!`)
       return false;
     }
+    setError('');
     return true;
   };
 
